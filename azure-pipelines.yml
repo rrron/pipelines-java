@@ -24,8 +24,8 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 
-  - script: |
-      python do-something.py
-    env:
-      SYSTEM_ACCESSTOKEN: $(System.AccessToken)
-  displayName: 'PR Comment'
+- script: |
+    python do-something.py
+  env:
+    SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+displayName: 'PR Comment'
