@@ -24,11 +24,16 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 
-- task: github-pr-comment@0
+- task: PythonScript@0
   inputs:
-    userToken: '$(githubToken)'
-    repository: '$(Build.Repository.Name)'
-    prNumber: '$(System.PullRequest.PullRequestNumber)'
-    bodyFilePath: 'Tasks/GitHubPRComment/'
-    extension: 'txt'
-    getSubFolders: true
+    scriptSource: 'inline'
+    script: |
+        print('variableInVariableGroup: $(variableInVariableGroup)')
+
+- task: PythonScript@0
+  inputs:
+    scriptSource: 'inline'
+    script: |
+      import os
+      
+      print (os.environ)
