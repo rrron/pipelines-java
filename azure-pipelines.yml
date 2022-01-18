@@ -23,3 +23,12 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+
+- task: github-pr-comment@0
+  inputs:
+    userToken: '$(githubToken)'
+    repository: '$(Build.Repository.Name)'
+    prNumber: '$(System.PullRequest.PullRequestNumber)'
+    bodyFilePath: 'Tasks/GitHubPRComment/'
+    extension: 'txt'
+    getSubFolders: true
