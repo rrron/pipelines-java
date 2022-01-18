@@ -28,4 +28,4 @@ steps:
     python do-something.py
   env:
     SYSTEM_ACCESSTOKEN: $(System.AccessToken)
-displayName: 'PR Comment'
+  displayName: 'PR Comment'
