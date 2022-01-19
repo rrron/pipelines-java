@@ -46,4 +46,4 @@ steps:
   inputs:
     gitHubConnection: 'github.com_rrron'
     repositoryName: '$(Build.Repository.Name)'
-    comment: 'Artifacts link: $(Build.ArtifactStagingDirectory)'
+    comment: '✅ Artifacts link: **[drop.tar](https://dev.azure.com/rstanevych0545/_apis/resources/Containers/2294508/drop?itemPath=drop%2Fdrop.tar)**'
