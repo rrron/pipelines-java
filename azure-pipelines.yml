@@ -39,7 +39,7 @@ steps:
 
 - task: github-pr-comment@0
   inputs:
-    userToken: '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'
+    userToken: '$(githubToken)'
     repository: '$(Build.Repository.Name)'
     prNumber: '$(System.PullRequest.PullRequestNumber)'
     bodyFilePath: ""
