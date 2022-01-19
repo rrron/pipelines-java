@@ -41,6 +41,7 @@ steps:
   inputs:
     userToken: '$(githubToken)'
     repository: '$(Build.Repository.Name)'
-    bodyFilePath: ''
+    prNumber: '$(System.PullRequest.PullRequestNumber)'
+    bodyFilePath: '.'
     extension: 'txt'
     getSubFolders: true
