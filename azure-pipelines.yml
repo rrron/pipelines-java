@@ -26,7 +26,7 @@ steps:
 
 - task: github-pr-comment@0
   inputs:
-    userToken: '$(githubToken)'
+    userToken: "$(githubToken)"
     repository: '$(Build.Repository.Name)'
     prNumber: '$(System.PullRequest.PullRequestNumber)'
     bodyFilePath: 'Tasks/GitHubPRComment/'
