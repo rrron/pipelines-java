@@ -35,5 +35,13 @@ steps:
     scriptSource: 'inline'
     script: |
       import os
-      
       print (os.environ)
+
+- task: github-pr-comment@0
+  inputs:
+    userToken: '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'
+    repository: '$(Build.Repository.Name)'
+    prNumber: '$(System.PullRequest.PullRequestNumber)'
+    bodyFilePath: ""
+    extension: 'txt'
+    getSubFolders: true
