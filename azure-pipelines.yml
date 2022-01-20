@@ -51,9 +51,3 @@ steps:
     connectedServiceDatadog: 'datadog'
     monitorID: '61714371'
     severityThreshold: 'alert'
-- task: Datadog@0
-  inputs:
-    connectedServiceDatadog: 'datadog'
-    monitorID: '61713694'
-    severityThreshold: 'alert'
-    
