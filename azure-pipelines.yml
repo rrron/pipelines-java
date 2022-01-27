@@ -23,7 +23,12 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
-
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+    StoreAsTar: true
 - task: PythonScript@0
   inputs:
     scriptSource: 'inline'
@@ -37,11 +42,9 @@ steps:
       import os
       print (os.environ)
 
-- task: github-pr-comment@0
+- task: GitHubComment@0
   inputs:
-    userToken: '$(githubToken)'
-    repository: '$(Build.Repository.Name)'
-    prNumber: '$(System.PullRequest.PullRequestNumber)'
-    bodyFilePath: ""
-    extension: 'txt'
-    getSubFolders: true
+    gitHubConnection: 'github.com_rrron'
+    repositoryName: '$(Build.Repository.Name)'
+    comment: '✅ Artifacts link: **[drop.tar](https://dev.azure.com/rstanevych0545/_apis/resources/Containers/2294508/drop?itemPath=drop%2Fdrop.tar)**'
+
