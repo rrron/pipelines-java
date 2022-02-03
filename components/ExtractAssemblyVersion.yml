@@ -1,3 +1,4 @@
+- task: Script
 - checkout: self
   fetchDepth: 1
 - bash: |
