@@ -1,3 +1,5 @@
+jobs:
+- job: ExtractAssemblyVersion
 steps:
 - checkout: self
   fetchDepth: 1
