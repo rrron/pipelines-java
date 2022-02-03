@@ -18,7 +18,7 @@ stages:
   - template: components/ExtractAssemblyVersion.yml
 
 - stage: BuildAndTest
-- job: Linux
+- jobs: Linux
   steps:
   - template: components/maven.yml
 #   jobs:
