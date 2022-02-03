@@ -13,6 +13,7 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+- template: components/ExtractAssemblyVersion.yml
 - template: components/maven.yml
 - template: components/python.yml
 - template: components/github-pr-comment.yml
