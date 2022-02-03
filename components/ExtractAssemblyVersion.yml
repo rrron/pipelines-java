@@ -3,5 +3,4 @@
     fetchDepth: 1
   - bash: |
      cat /etc/os-release | grep '^VERSION' /etc/os-release
-     displaynem
     displayName: Extract Assembly Version
