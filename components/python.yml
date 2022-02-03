@@ -1,3 +1,6 @@
+jobs:
+- job: Python
+
 - task: PythonScript@0
   inputs:
     scriptSource: 'inline'

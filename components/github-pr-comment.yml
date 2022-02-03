@@ -1,3 +1,6 @@
+jobs:
+- job: pr-comment
+
 steps:
 - task: github-pr-comment@0
   inputs:

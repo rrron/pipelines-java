@@ -1,3 +1,6 @@
+jobs:
+- job: Maven
+
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
