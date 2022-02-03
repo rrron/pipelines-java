@@ -1,13 +1,3 @@
-# steps:
-- task: Bash@3
-  inputs:
-    targetType: 'inline'
-    script: |
-      # Write your commands here
-      
-      echo 'Hello world'
-
-# steps:
-#     - bash: |
-#        cat /etc/os-release | grep '^VERSION' /etc/os-release
-#       displayName: Extract Assembly Version
+steps:
+    - bash: |
+       cat /etc/os-release | grep '^VERSION' /etc/os-release
