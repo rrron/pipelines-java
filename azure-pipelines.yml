@@ -18,11 +18,13 @@ stages:
   - job: ExtractAssemblyVersion
 - template: components/ExtractAssemblyVersion.yml
 
-- stage: BuildAndTest
-  jobs:
-  - job: maven
-- template: components/maven.yml
-  - job: python
-- template: components/python.yml
-  - job: github-pr-comment
-- template: components/github-pr-comment.yml
+# - stage: BuildAndTest
+#   jobs:
+#   - job: maven
+# - template: components/maven.yml
+#   jobs:
+#   - job: python
+# - template: components/python.yml
+#   jobs:
+#   - job: github-pr-comment
+# - template: components/github-pr-comment.yml
