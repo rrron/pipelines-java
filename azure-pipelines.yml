@@ -18,8 +18,7 @@ stages:
   - template: components/ExtractAssemblyVersion.yml
 
 - stage: BuildAndTest
-- jobs: Linux
-  steps:
+  jobs:
   - template: components/maven.yml
 #   jobs:
 #   - job: python
