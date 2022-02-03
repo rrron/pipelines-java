@@ -22,9 +22,7 @@ stages:
   jobs:
   - job: maven
 - template: components/maven.yml
-  jobs:
   - job: python
 - template: components/python.yml
-  jobs:
   - job: github-pr-comment
 - template: components/github-pr-comment.yml
