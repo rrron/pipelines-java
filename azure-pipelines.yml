@@ -12,8 +12,10 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:
+jobs:
 - template: components/ExtractAssemblyVersion.yml
+
+steps:
 - template: components/maven.yml
 - template: components/python.yml
 - template: components/github-pr-comment.yml
