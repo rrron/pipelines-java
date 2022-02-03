@@ -15,7 +15,8 @@ stages:
 - stage: Setup
   jobs:
 - template: components/ExtractAssemblyVersion.yml
-steps:
+
+- stage: BuildAndTest
 - template: components/maven.yml
 - template: components/python.yml
 - template: components/github-pr-comment.yml
