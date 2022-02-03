@@ -22,9 +22,9 @@ stages:
   - job: BuildAndTest
     steps:
     - template: components/maven.yml
-  - job: python
+  - job: Python
     steps:
     - template: components/python.yml
-  - job: github-pr-comment
+  - job: GithubPrComment
     steps:
     - template: components/github-pr-comment.yml
