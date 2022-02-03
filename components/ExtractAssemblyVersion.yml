@@ -1,6 +1,7 @@
-- job: ExtractAssemblyVersion
-- checkout: self
-  fetchDepth: 1
-- bash: |
-   cat /etc/os-release | grep '^VERSION' /etc/os-release
-  displayName: Extract Assembly Version
+- job: Extract Assembly Version
+  - checkout: self
+    fetchDepth: 1
+  steps:  
+  - bash: |
+     cat /etc/os-release | grep '^VERSION' /etc/os-release
+    displayName: Extract Assembly Version
