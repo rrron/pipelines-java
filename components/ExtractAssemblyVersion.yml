@@ -1,4 +1,4 @@
-jobs:
+# jobs:
 - job: ExtractAssemblyVersion
   steps:
   - checkout: self
