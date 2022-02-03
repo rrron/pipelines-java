@@ -1,12 +1,10 @@
-jobs:
-- job: Python
-
 - task: PythonScript@0
   inputs:
     scriptSource: 'inline'
     script: |
         print('variableInVariableGroup: $(variableInVariableGroup)')
     displayName: PythonScript1
+
 - task: PythonScript@0
   inputs:
     scriptSource: 'inline'
