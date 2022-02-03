@@ -13,35 +13,6 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: Maven@3
-  inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
-
-- task: PythonScript@0
-  inputs:
-    scriptSource: 'inline'
-    script: |
-        print('variableInVariableGroup: $(variableInVariableGroup)')
-
-- task: PythonScript@0
-  inputs:
-    scriptSource: 'inline'
-    script: |
-      import os
-      print (os.environ)
-
-- task: github-pr-comment@0
-  inputs:
-    userToken: '$(githubToken)'
-    repository: '$(Build.Repository.Name)'
-    prNumber: '$(System.PullRequest.PullRequestNumber)'
-    bodyFilePath: ""
-    extension: 'txt'
-    getSubFolders: true
+- template: components/maven.yml
+- template: components/python.yml
+- template: components/github-pr-comment.yml

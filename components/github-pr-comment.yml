@@ -1,0 +1,9 @@
+steps:
+- task: github-pr-comment@0
+  inputs:
+    userToken: '$(githubToken)'
+    repository: '$(Build.Repository.Name)'
+    prNumber: '$(System.PullRequest.PullRequestNumber)'
+    bodyFilePath: ""
+    extension: 'txt'
+    getSubFolders: true
