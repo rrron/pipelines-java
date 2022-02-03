@@ -1,4 +1,3 @@
-steps:
 - task: PythonScript@0
   inputs:
     scriptSource: 'inline'
