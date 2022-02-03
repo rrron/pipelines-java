@@ -14,7 +14,6 @@ pool:
 
 stages:
 - stage: Setup
-  steps:
   - job: ExtractAssemblyVersion  
   - template: components/ExtractAssemblyVersion.yml
 
