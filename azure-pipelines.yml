@@ -16,7 +16,6 @@ stages:
 - stage: Setup
   jobs:
   - job: ExtractAssemblyVersion
-    steps:
   - template: components/ExtractAssemblyVersion.yml
 
 # - stage: BuildAndTest
