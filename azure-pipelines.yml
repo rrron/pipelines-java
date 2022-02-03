@@ -19,7 +19,7 @@ stages:
 
 - stage: BuildAndTest
   jobs:
-- template: components/maven.yml
+  - template: components/maven.yml
 #   jobs:
 #   - job: python
 # - template: components/python.yml
