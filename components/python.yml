@@ -4,10 +4,11 @@ steps:
     scriptSource: 'inline'
     script: |
         print('variableInVariableGroup: $(variableInVariableGroup)')
-
+    displayName: PythonScript1
 - task: PythonScript@0
   inputs:
     scriptSource: 'inline'
     script: |
       import os
       print (os.environ)
+    displayName: PythonScript2
