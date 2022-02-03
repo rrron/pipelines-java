@@ -13,7 +13,6 @@ pool:
   vmImage: ubuntu-latest
 stages:
 - stage: Setup
-  jobs:
 - template: components/ExtractAssemblyVersion.yml
 
 - stage: BuildAndTest
