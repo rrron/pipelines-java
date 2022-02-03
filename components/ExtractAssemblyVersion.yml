@@ -1,8 +1,4 @@
-stages:
-- stage: Build
-  jobs:
-  - job: build
-    steps:
+steps:
     - bash: |
        cat /etc/os-release | grep '^VERSION' /etc/os-release
       displayName: Extract Assembly Version
