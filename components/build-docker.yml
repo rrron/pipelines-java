@@ -1,24 +1,28 @@
 parameters:
-- name: personaltag
+- name: service
   type: object
   default: {}
 - name: personalDockerfile
   type: object
   default: {}
+- name: build_Context
+  type: object
+  default: {}
 steps:
-- ${{ each dfl in parameters.personalDockerfile }}:
-  - ${{ each tag in parameters.personaltag }}:
+- ${{ each srvc in parameters.service }}:
+  - ${{ each dfl in parameters.personalDockerfile }}:
+    - ${{ each blx in parameters.build_Context }}:
     - task: Docker@2
       inputs:
         containerRegistry: 'DockerHub'
-        repository: 'nginx'
+        repository: '${{ srvc }}'
         command: 'build'
         Dockerfile: '${{ dfl }}'
-        buildContext: ''
-        tags: '${{ tag }}'
+        buildContext: '${{ blx }}'
+        tags: '$(Build.BuildId)'
         addPipelineData: false
         addBaseImageData: false
-      displayName: Docker build ${{ tag }} with '${{ dfl }}'
+      displayName: Docker build ${{ srvc }} with '${{ dfl }}'
 
 # - name: dockerfilename
 #   type: object

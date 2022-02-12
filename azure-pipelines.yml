@@ -23,11 +23,21 @@ stages:
     steps:
     - template: components/build-docker.yml
       parameters:
-        personaltag:
-          - $(Build.BuildId)
+        build_Context:
+          - "**"
+          - "*"
+          - "$(System.DefaultWorkingDirectory)"
         personalDockerfile:
           - "dockerfolder/Dockerfile"
           - "dockerfolder/DockerfileHttpd"
+        service:
+          - ingest_service
+          - metadata_tools
+          - management_service
+          - ingest_service
+          - query_service
+          - processing_service
+          - landing_zone
 
 # - stage: BuildAndTest
 #   jobs:
