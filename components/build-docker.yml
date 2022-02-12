@@ -4,11 +4,7 @@ parameters:
   default:
   - foo
   - bar
- 
-jobs:
-- job: EachArraySteps
-  pool:
-    vmImage: ubuntu-20.04
+
   steps:
   - ${{each thing in parameters.thingsArray}}:
     - pwsh: Write-Output ${{thing}}
