@@ -31,7 +31,7 @@ stages:
 
 - stage: DockerBuild
   jobs:
-- ${{each tag in parameters.personaltag}}:
+  - ${{each tag in parameters.personaltag}}:
   - job: Build
     steps:
     - script: |
