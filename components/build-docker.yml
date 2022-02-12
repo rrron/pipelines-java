@@ -1,0 +1,20 @@
+parameters:
+- name: dockerfilename
+  default: ''
+# - name: service
+#   default: ''
+# - name: build_Context
+#   default: ''
+
+steps:
+  - task: Docker@2
+    inputs:
+      containerRegistry: 'DockerHub'
+      repository: 'nginx'
+      command: 'build'
+      Dockerfile: '${{ parameters.dockerfilename }}'
+      # Dockerfile: 'dockerfolder/Dockerfile'
+      buildContext: ''
+      tags: '$(Build.BuildId)'
+      addPipelineData: false
+      addBaseImageData: false

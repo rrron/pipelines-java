@@ -36,13 +36,7 @@ stages:
     - script: |
         mkdir -p dockerfolder/static-html-directory/
       displayName: Create static-html-directory
-    - task: Docker@2
-      inputs:
-        containerRegistry: 'DockerHub'
-        repository: 'nginx'
-        command: 'build'
-        Dockerfile: 'dockerfolder/Dockerfile'
-        buildContext: ''
-        tags: '$(Build.SourceVersion)'
-        addPipelineData: false
-        addBaseImageData: false
+
+    - template: components/build-docker.yml
+      parameters:
+        dockerfilename: 'dockerfolder/Dockerfile'
