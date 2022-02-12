@@ -12,17 +12,17 @@ steps:
 - ${{ each srvc in parameters.service }}:
   - ${{ each dfl in parameters.personalDockerfile }}:
     - ${{ each blx in parameters.build_Context }}:
-    - task: Docker@2
-      inputs:
-        containerRegistry: 'DockerHub'
-        repository: '${{ srvc }}'
-        command: 'build'
-        Dockerfile: '${{ dfl }}'
-        buildContext: '${{ blx }}'
-        tags: '$(Build.BuildId)'
-        addPipelineData: false
-        addBaseImageData: false
-      displayName: Docker build ${{ srvc }} with '${{ dfl }}'
+      - task: Docker@2
+        inputs:
+          containerRegistry: 'DockerHub'
+          repository: '${{ srvc }}'
+          command: 'build'
+          Dockerfile: '${{ dfl }}'
+          buildContext: '${{ blx }}'
+          tags: '$(Build.BuildId)'
+          addPipelineData: false
+          addBaseImageData: false
+        displayName: Docker build ${{ srvc }} with '${{ dfl }}'
 
 # - name: dockerfilename
 #   type: object
