@@ -2,6 +2,7 @@ parameters:
 - name: dockerfilename
   default: ''
 - name: personaltag
+  type: object
   default: 
     - '$(Build.BuildId)'
     - '$(Build.BuildNumber)'
