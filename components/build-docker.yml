@@ -2,9 +2,6 @@ parameters:
   - name: paramn
     type: object
     default: 
-      - a
-      - b
-      - c
 
 # - name: dockerfilename
 
