@@ -13,16 +13,16 @@ parameters:
 #   default: ''
 
 steps:
-  - ${{each thing in file.dockerfilename}}:
-  - ${{each thing in tag.personaltag}}:
+  - ${{each file in parameters.dockerfilename}}:
+  - ${{each tag in parameters.personaltag}}:
   - task: Docker@2
     inputs:
       containerRegistry: 'DockerHub'
       repository: 'nginx'
       command: 'build'
-      Dockerfile: '${{ parameters.dockerfilename }}'
+      Dockerfile: '${{ parameters.file }}'
       # Dockerfile: 'dockerfolder/Dockerfile'
       buildContext: ''
-      tags: '${{ parameters.personaltag }}'
+      tags: '${{ parameters.tag }}'
       addPipelineData: false
       addBaseImageData: false
