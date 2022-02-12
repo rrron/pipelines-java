@@ -38,5 +38,5 @@ stages:
       displayName: Create static-html-directory
 
     - template: components/build-docker.yml
-      parameters:
-        dockerfilename: 'dockerfolder/Dockerfile'
+      # parameters:
+      #   dockerfilename: 'dockerfolder/Dockerfile'

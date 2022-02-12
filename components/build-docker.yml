@@ -1,10 +1,14 @@
-variables:
-- name: personaltag
-  value: $(Build.BuildId), $(Build.BuildNumber)
 parameters:
 - name: dockerfilename
-  default: ''
-
+  type: object
+  default: 
+    - dockerfolder/Dockerfile
+    - dockerfolder/DockerfileHttpd
+- name: personaltag
+  type: object
+  default:
+    - $(Build.BuildId)
+    - $(Build.BuildNumber)
 # - name: build_Context
 #   default: ''
 
