@@ -2,17 +2,6 @@
 # Build your Java project and run tests with Apache Maven.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
-parameters:
-- name: dockerfilenames
-  type: object
-  default: 
-    - "dockerfolder/Dockerfile"
-    - "dockerfolder/DockerfileHttpd"
-- name: personaltags
-  type: object
-  default:
-    - "$(Build.BuildId)"
-    - "$(Build.BuildNumber)"
 
 trigger:
 - main
@@ -32,23 +21,15 @@ stages:
   jobs:
   - job: BuildAndTest
   steps:
-  - ${{ each dockerfilename in parameters.dockerfilenames }}:
-  - ${{ each personaltag in parameters.personaltags }}:
-    - task: Docker@2
-    inputs:
-      containerRegistry: 'DockerHub'
-      repository: 'nginx'
-      command: 'build'
-      Dockerfile: '${{ parameters.dockerfilename }}'
-      buildContext: ''
-      tags: '${{ parameters.personaltag }}'
-      addPipelineData: false
-      addBaseImageData: false
+  - template: components/build-docker.yml
+    parameters:
+      param: ["a", "b", "c"]
+
 # - stage: BuildAndTest
 #   jobs:
-#   - job: BuildAndTest
-#     steps:
-#     - template: components/maven.yml
+  # - job: BuildAndTest
+  #   steps:
+  #   - template: components/maven.yml
 #   - job: Python
 #     steps:
 #     - template: components/python.yml
