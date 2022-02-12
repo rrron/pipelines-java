@@ -2,19 +2,23 @@ parameters:
 - name: personaltag
   type: object
   default: {}
+- name: personalDockerfile
+  type: object
+  default: {}
 steps:
 - ${{ each tag in parameters.personaltag }}:
+- ${{ each dfl in parameters.personalDockerfile }}:
   - task: Docker@2
     inputs:
       containerRegistry: 'DockerHub'
       repository: 'nginx'
       command: 'build'
-      Dockerfile: 'dockerfolder/Dockerfile'
+      Dockerfile: '${{ dfl }}'
       buildContext: ''
       tags: '${{ tag }}'
       addPipelineData: false
       addBaseImageData: false
-    displayName: Docker buildd ${{ tag }}
+    displayName: Docker build ${{ tag }} with '${{ dfl }}'
 
 # - name: dockerfilename
 #   type: object

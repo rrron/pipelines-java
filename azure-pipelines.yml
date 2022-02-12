@@ -27,6 +27,9 @@ stages:
           - $(Build.BuildId)
           - $(Build.BuildNumber)
           - TEST_TAG
+      personalDockerfile:
+          - "dockerfolder/Dockerfile"
+          - "dockerfolder/DockerfileHttpd"
 
 # - stage: BuildAndTest
 #   jobs:
