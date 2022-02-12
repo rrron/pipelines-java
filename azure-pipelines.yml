@@ -24,7 +24,7 @@ stages:
     - template: components/build-docker.yml
       parameters:
         personaltag:
-          - $(Build.BuildId
+          - $(Build.BuildId)
           - $(Build.BuildNumber)
           - TEST_TAG
 
