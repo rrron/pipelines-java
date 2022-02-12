@@ -1,4 +1,7 @@
 parameters:
+- name: personaltag
+  type: object
+  default: {}
 steps:
 - ${{ each tag in parameters.personaltag }}:
   - task: Docker@2
