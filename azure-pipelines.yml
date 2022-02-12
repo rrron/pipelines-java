@@ -23,10 +23,9 @@ stages:
     steps:
     - template: components/build-docker.yml
       parameters:
-        personaltag:
-          - $(Build.BuildId)
-          - $(Build.BuildNumber)
-          - TEST_TAG
+        personaltag: $(Build.BuildId)
+          # - $(Build.BuildNumber)
+          # - TEST_TAG
         personalDockerfile:
           - "dockerfolder/Dockerfile"
           - "dockerfolder/DockerfileHttpd"
