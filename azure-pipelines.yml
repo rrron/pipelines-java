@@ -40,4 +40,4 @@ stages:
     - template: components/build-docker.yml
       parameters:
         dockerfilename: 'dockerfolder/Dockerfile'
-        personaltag: '$(tag)'
+        personaltag: ['$(Build.BuildId)', '$(Build.BuildNumber)']

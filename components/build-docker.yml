@@ -1,16 +1,12 @@
 parameters:
 - name: dockerfilename
   default: ''
-- name: personaltag
-  type: object
-  default: 
-  - '$(Build.BuildId)'
-  - '$(Build.BuildNumber)'
+- personaltag: []
+
 # - name: build_Context
 #   default: ''
 
 steps:
-- ${{each tag in parameters.personaltag}}:
   - task: Docker@2
     inputs:
       containerRegistry: 'DockerHub'
@@ -19,6 +15,6 @@ steps:
       Dockerfile: '${{ parameters.dockerfilename }}'
       # Dockerfile: 'dockerfolder/Dockerfile'
       buildContext: ''
-      tags: '$(tag)'
+      tags: '${{ parameters.personaltag }}'
       addPipelineData: false
       addBaseImageData: false
