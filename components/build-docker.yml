@@ -17,7 +17,7 @@ steps:
       tags: '${{ parameters.personaltag }}'
       addPipelineData: false
       addBaseImageData: false
-    displayName: Docker build ${{ tag }} with '${{ dfl }}'
+    displayName: Docker build ${{ parameters.personaltag }} with '${{ dfl }}'
 
 # - name: dockerfilename
 #   type: object
