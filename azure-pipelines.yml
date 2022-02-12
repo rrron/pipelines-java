@@ -43,6 +43,6 @@ stages:
         command: 'build'
         Dockerfile: 'dockerfolder/Dockerfile'
         buildContext: ''
-        tags: 
+        tags: '$(Build.SourceVersion)'
         addPipelineData: false
         addBaseImageData: false
