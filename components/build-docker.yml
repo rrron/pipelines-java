@@ -6,8 +6,8 @@ parameters:
   type: object
   default: {}
 steps:
-- ${{ each dfl in parameters.personalDockerfile }}:
-  - ${{ each tag in parameters.personaltag }}:
+- ${{ each tag in parameters.personaltag }}:
+  - ${{ each dfl in parameters.personalDockerfile }}:
     - task: Docker@2
       inputs:
         containerRegistry: 'DockerHub'
