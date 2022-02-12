@@ -29,7 +29,7 @@ stages:
       parameters:
         build_Context:
           - "$(System.DefaultWorkingDirectory)"
-          - "*"
+          - ""
           - "$(System.DefaultWorkingDirectory)"
         personalDockerfile:
           - "dockerfolder/Dockerfile"
