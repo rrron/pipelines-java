@@ -15,10 +15,10 @@ steps:
           containerRegistry: 'DockerHub'
           repository: '${{ srvc }}'
           command: 'build'
-          each $(dfl) in $(parameters.personalDockerfile):
-          Dockerfile: '${{ dfl }}'
+          each dfl in parameters.personalDockerfile:
+            Dockerfile: '${{ dfl }}'
           each blx in parameters.build_Context:
-          buildContext: '${{ blx }}'
+            buildContext: '${{ blx }}'
           tags: '$(Build.BuildId)'
           addPipelineData: false
           addBaseImageData: false
