@@ -11,7 +11,7 @@ steps:
       command: 'build'
       Dockerfile: 'dockerfolder/Dockerfile'
       buildContext: ''
-      tags: '${{ parameters.tag }}'
+      tags: '${{ tag }}'
       addPipelineData: false
       addBaseImageData: false
 
