@@ -1,36 +1,15 @@
 parameters:
-- name: thingsArray
-  type: object
-  default:
-  - foo
-  - bar
+- name: dockerfilename
+- name: personaltag
 
-  - ${{each thing in parameters.thingsArray}}:
-    - pwsh: Write-Output ${{thing}}
-      displayName: Show thing
-
-# parameters:
-# - name: dockerfilename
-#   type: object
-#   default: 
-#     - dockerfolder/Dockerfile
-#     - dockerfolder/DockerfileHttpd
-# - name: personaltag
-#   type: object
-#   default:
-#     - $(Build.BuildId)
-#     - $(Build.BuildNumber)
-
-# steps:
-#   - ${{each file in parameters.dockerfilename}}:
-#   - ${{each tag in parameters.personaltag}}:
-#   - task: Docker@2
-#     inputs:
-#       containerRegistry: 'DockerHub'
-#       repository: 'nginx'
-#       command: 'build'
-#       Dockerfile: '${{ parameters.file }}'
-#       buildContext: ''
-#       tags: '${{ parameters.tag }}'
-#       addPipelineData: false
-#       addBaseImageData: false
+steps:
+  - task: Docker@2
+    inputs:
+      containerRegistry: 'DockerHub'
+      repository: 'nginx'
+      command: 'build'
+      Dockerfile: '${{ parameters.dockerfilename }}'
+      buildContext: ''
+      tags: '${{ parameters.personaltag }}'
+      addPipelineData: false
+      addBaseImageData: false

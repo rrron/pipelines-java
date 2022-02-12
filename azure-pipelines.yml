@@ -28,6 +28,17 @@ stages:
 #   - job: GithubPrComment
 #     steps:
 #     - template: components/github-pr-comment.yml
+parameters:
+- name: dockerfilenames
+  type: object
+  default: 
+    - dockerfolder/Dockerfile
+    - dockerfolder/DockerfileHttpd
+- name: personaltags
+  type: object
+  default:
+    - $(Build.BuildId)
+    - $(Build.BuildNumber)
 
 - stage: DockerBuild
   jobs:
@@ -36,7 +47,9 @@ stages:
     - script: |
         mkdir -p dockerfolder/static-html-directory/
       displayName: Create static-html-directory
-
+  - ${{ each dockerfilename in parameters.dockerfilenames }}:
+  - ${{ each personaltag in parameters.personaltags }}:
     - template: components/build-docker.yml
-      # parameters:
-      #   dockerfilename: 'dockerfolder/Dockerfile'
+      parameters:
+        dockerfilename: ${{ dockerfilename }}
+        personaltag: ${{ personaltag }}
