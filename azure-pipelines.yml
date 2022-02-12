@@ -37,7 +37,10 @@ stages:
   jobs:
   - template: components/ExtractAssemblyVersion.yml
 
-steps:
+- stage: BuildAndTest
+  jobs:
+  - job: BuildAndTest
+  steps:
   - ${{ each user in parameters.users }}:
     - ${{ if eq(user.name, '') }}:
       - script: echo 'User ${{ user }} has no email.'
