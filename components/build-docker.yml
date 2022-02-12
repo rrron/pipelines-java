@@ -1,7 +1,9 @@
+variables:
+- name: personaltag
+  value: $(Build.BuildId), $(Build.BuildNumber)
 parameters:
 - name: dockerfilename
   default: ''
-- personaltag: []
 
 # - name: build_Context
 #   default: ''
