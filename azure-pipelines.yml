@@ -28,3 +28,18 @@ stages:
   - job: GithubPrComment
     steps:
     - template: components/github-pr-comment.yml
+
+- stage: DockerBuild
+  jobs:
+  - job: Build
+    steps:
+    - task: Docker@2
+      inputs:
+        containerRegistry: 'DockerHub'
+        repository: 'nginx'
+        command: 'build'
+        Dockerfile: 'dockerfolder/Dockerfile'
+        buildContext: ''
+        tags: 
+        addPipelineData: false
+        addBaseImageData: false
