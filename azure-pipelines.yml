@@ -23,7 +23,7 @@ stages:
     steps:
     - template: components/build-docker.yml
       parameters:
-        - ${{ each tag in personaltag }}:
+      - ${{ each tag in personaltag }}:
         personaltag:
           - $(Build.BuildId)
           - $(Build.BuildNumber)
