@@ -1,8 +1,10 @@
 parameters:
 - name: dockerfilename
   default: ''
-# - name: service
-#   default: ''
+- name: personaltag
+  default: 
+    - '$(Build.BuildId)'
+    - '$(Build.BuildNumber)'
 # - name: build_Context
 #   default: ''
 
@@ -15,6 +17,6 @@ steps:
       Dockerfile: '${{ parameters.dockerfilename }}'
       # Dockerfile: 'dockerfolder/Dockerfile'
       buildContext: ''
-      tags: '$(Build.BuildId)'
+      tags: '${{ parameters.personaltag }}'
       addPipelineData: false
       addBaseImageData: false

@@ -31,6 +31,7 @@ stages:
 
 - stage: DockerBuild
   jobs:
+- ${{each tag in parameters.personaltag}}:
   - job: Build
     steps:
     - script: |
@@ -40,3 +41,4 @@ stages:
     - template: components/build-docker.yml
       parameters:
         dockerfilename: 'dockerfolder/Dockerfile'
+        personaltag: '$(tag)'
