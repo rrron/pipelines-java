@@ -2,26 +2,17 @@
 # Build your Java project and run tests with Apache Maven.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
-# parameters:
-# - name: dockerfilenames
-#   type: object
-#   default: 
-#     - "dockerfolder/Dockerfile"
-#     - "dockerfolder/DockerfileHttpd"
-# - name: personaltags
-#   type: object
-#   default:
-#     - "$(Build.BuildId)"
-#     - "$(Build.BuildNumber)"
 parameters:
-  - name: users
-    type: object
-    default:
-      - name: 'john'
-        email: 'john@doe.com'
-      - name: 'jane'
-        email: 'jane@doe.com'
-      - bob
+- name: dockerfilenames
+  type: object
+  default: 
+    - "dockerfolder/Dockerfile"
+    - "dockerfolder/DockerfileHttpd"
+- name: personaltags
+  type: object
+  default:
+    - "$(Build.BuildId)"
+    - "$(Build.BuildNumber)"
 
 trigger:
 - main
@@ -41,11 +32,18 @@ stages:
   jobs:
   - job: BuildAndTest
   steps:
-  - ${{ each user in parameters.users }}:
-    - ${{ if eq(user.name, '') }}:
-      - script: echo 'User ${{ user }} has no email.'
-    - ${{ if ne(user.name, '') }}:
-      - script: echo 'User ${{ user.name }} with email ${{ user.email }}.'
+  - ${{ each dockerfilename in parameters.dockerfilenames }}:
+  - ${{ each personaltag in parameters.personaltags }}:
+    - task: Docker@2
+    inputs:
+      containerRegistry: 'DockerHub'
+      repository: 'nginx'
+      command: 'build'
+      Dockerfile: '${{ parameters.dockerfilename }}'
+      buildContext: ''
+      tags: '${{ parameters.personaltag }}'
+      addPipelineData: false
+      addBaseImageData: false
 # - stage: BuildAndTest
 #   jobs:
 #   - job: BuildAndTest
