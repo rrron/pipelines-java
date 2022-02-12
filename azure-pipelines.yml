@@ -17,22 +17,25 @@ stages:
   jobs:
   - template: components/ExtractAssemblyVersion.yml
 
-- stage: BuildAndTest
-  jobs:
-  - job: BuildAndTest
-    steps:
-    - template: components/maven.yml
-  - job: Python
-    steps:
-    - template: components/python.yml
-  - job: GithubPrComment
-    steps:
-    - template: components/github-pr-comment.yml
+# - stage: BuildAndTest
+#   jobs:
+#   - job: BuildAndTest
+#     steps:
+#     - template: components/maven.yml
+#   - job: Python
+#     steps:
+#     - template: components/python.yml
+#   - job: GithubPrComment
+#     steps:
+#     - template: components/github-pr-comment.yml
 
 - stage: DockerBuild
   jobs:
   - job: Build
     steps:
+    - script: |
+        mkdir -p dockerfolder/static-html-directory/
+      displayName: Create static-html-directory
     - task: Docker@2
       inputs:
         containerRegistry: 'DockerHub'
