@@ -6,7 +6,7 @@ parameters:
   type: object
   default: {}
 steps:
-- ${{ each dfl,tag in parameters.personalDockerfile, parameters.personaltag }}:
+- ${{ each dfl in parameters.personalDockerfile AND each tag in parameters.personaltag }}:
   - task: Docker@2
     inputs:
       containerRegistry: 'DockerHub'
