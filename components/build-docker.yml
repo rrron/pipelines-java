@@ -15,10 +15,10 @@ steps:
         command: 'build'
         Dockerfile: '${{ dfl }}'
         buildContext: ''
-        tags: '${{ parameters.tag }}'
+        tags: '${{ tag }}'
         addPipelineData: false
         addBaseImageData: false
-      displayName: Docker build ${{ parameters.personaltag }} with '${{ dfl }}'
+      displayName: Docker build ${{ tag }} with '${{ dfl }}'
 
 # - name: dockerfilename
 #   type: object
