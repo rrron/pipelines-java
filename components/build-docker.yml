@@ -13,6 +13,8 @@ parameters:
 #   default: ''
 
 steps:
+  - ${{each thing in file.dockerfilename}}:
+  - ${{each thing in tag.personaltag}}:
   - task: Docker@2
     inputs:
       containerRegistry: 'DockerHub'
