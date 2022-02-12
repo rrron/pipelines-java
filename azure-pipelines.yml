@@ -23,7 +23,7 @@ stages:
     steps:
     - template: components/build-docker.yml
       parameters:
-        param: a
+        param: "pyj"
 
 # - stage: BuildAndTest
 #   jobs:
