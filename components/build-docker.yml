@@ -1,28 +1,41 @@
 parameters:
-- name: dockerfilename
-  type: object
-  default: 
-    - dockerfolder/Dockerfile
-    - dockerfolder/DockerfileHttpd
-- name: personaltag
+- name: thingsArray
   type: object
   default:
-    - $(Build.BuildId)
-    - $(Build.BuildNumber)
-# - name: build_Context
-#   default: ''
+  - foo
+  - bar
+ 
+jobs:
+- job: EachArraySteps
+  pool:
+    vmImage: ubuntu-20.04
+  steps:
+  - ${{each thing in parameters.thingsArray}}:
+    - pwsh: Write-Output ${{thing}}
+      displayName: Show thing
 
-steps:
-  - ${{each file in parameters.dockerfilename}}:
-  - ${{each tag in parameters.personaltag}}:
-  - task: Docker@2
-    inputs:
-      containerRegistry: 'DockerHub'
-      repository: 'nginx'
-      command: 'build'
-      Dockerfile: '${{ parameters.file }}'
-      # Dockerfile: 'dockerfolder/Dockerfile'
-      buildContext: ''
-      tags: '${{ parameters.tag }}'
-      addPipelineData: false
-      addBaseImageData: false
+# parameters:
+# - name: dockerfilename
+#   type: object
+#   default: 
+#     - dockerfolder/Dockerfile
+#     - dockerfolder/DockerfileHttpd
+# - name: personaltag
+#   type: object
+#   default:
+#     - $(Build.BuildId)
+#     - $(Build.BuildNumber)
+
+# steps:
+#   - ${{each file in parameters.dockerfilename}}:
+#   - ${{each tag in parameters.personaltag}}:
+#   - task: Docker@2
+#     inputs:
+#       containerRegistry: 'DockerHub'
+#       repository: 'nginx'
+#       command: 'build'
+#       Dockerfile: '${{ parameters.file }}'
+#       buildContext: ''
+#       tags: '${{ parameters.tag }}'
+#       addPipelineData: false
+#       addBaseImageData: false
