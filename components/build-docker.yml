@@ -6,7 +6,7 @@ parameters:
   type: object
   default: {}
 steps:
-- ${{ each tag in parameters.personaltag each dfl in parameters.personalDockerfile}}:
+- ${{ each dfl in parameters.personalDockerfile}}:
   - task: Docker@2
     inputs:
       containerRegistry: 'DockerHub'
@@ -14,7 +14,7 @@ steps:
       command: 'build'
       Dockerfile: '${{ dfl }}'
       buildContext: ''
-      tags: '${{ tag }}'
+      tags: '${{ parameters.personaltag }}'
       addPipelineData: false
       addBaseImageData: false
     displayName: Docker build ${{ tag }} with '${{ dfl }}'
