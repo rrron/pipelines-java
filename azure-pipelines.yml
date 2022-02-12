@@ -21,6 +21,10 @@ stages:
   jobs:
   - job: BuildAndTest
     steps:
+    - script: |
+        mkdir -p dockerfolder/static-html-directory/
+      displayName: Create static-html-directory
+
     - template: components/build-docker.yml
       parameters:
         build_Context:
