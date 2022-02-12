@@ -39,7 +39,6 @@ stages:
       displayName: Create static-html-directory
 
     - template: components/build-docker.yml
-      - ${{each tag in parameters.personaltag}}:
         parameters:
           dockerfilename: 'dockerfolder/Dockerfile'
           personaltag: '$(tag)'
