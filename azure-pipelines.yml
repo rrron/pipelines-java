@@ -23,7 +23,10 @@ stages:
     steps:
     - template: components/build-docker.yml
       parameters:
-        param: "pyj"
+        personaltag:
+          - $(Build.BuildId
+          - $(Build.BuildNumber)
+          - TEST_TAG
 
 # - stage: BuildAndTest
 #   jobs:

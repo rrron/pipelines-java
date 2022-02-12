@@ -1,10 +1,21 @@
 parameters:
-  - name: param
-    type: object
-    default: ''
+steps:
+- ${{ each tag in parameters.personaltag }}:
+  - task: Docker@2
+    inputs:
+      containerRegistry: 'DockerHub'
+      repository: 'nginx'
+      command: 'build'
+      Dockerfile: 'dockerfolder/Dockerfile'
+      buildContext: ''
+      tags: '${{ parameters.tag }}'
+      addPipelineData: false
+      addBaseImageData: false
+
 
 # - name: dockerfilename
-
+#   type: object
+#   default: 
 #     - "dockerfolder/Dockerfile"
 #     - "dockerfolder/DockerfileHttpd"
 # - name: personaltag
@@ -12,17 +23,3 @@ parameters:
 #   default:
 #     - "$(Build.BuildId)"
 #     - "$(Build.BuildNumber)"
-
-steps:
-  - ${{ each p in parameters.param }}:
-    - script: 'echo ${{ p }}'
-#   - task: Docker@2
-#     inputs:
-#       containerRegistry: 'DockerHub'
-#       repository: 'nginx'
-#       command: 'build'
-#       Dockerfile: '${{ parameters.dockerfilename }}'
-#       buildContext: ''
-#       tags: '${{ parameters.personaltag }}'
-#       addPipelineData: false
-#       addBaseImageData: false
