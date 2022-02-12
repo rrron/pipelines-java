@@ -28,7 +28,7 @@ stages:
     - template: components/build-docker.yml
       parameters:
         build_Context:
-          - "**"
+          - "$(System.DefaultWorkingDirectory)"
           - "*"
           - "$(System.DefaultWorkingDirectory)"
         personalDockerfile:
