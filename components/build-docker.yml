@@ -4,8 +4,8 @@ parameters:
 - name: personaltag
   type: object
   default: 
-    - '$(Build.BuildId)'
-    - '$(Build.BuildNumber)'
+  - '$(Build.BuildId)'
+  - '$(Build.BuildNumber)'
 # - name: build_Context
 #   default: ''
 
