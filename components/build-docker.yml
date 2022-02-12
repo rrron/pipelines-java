@@ -14,7 +14,7 @@ steps:
       tags: '${{ tag }}'
       addPipelineData: false
       addBaseImageData: false
-
+    displayName: Docker buildd ${{ tag }}
 
 # - name: dockerfilename
 #   type: object
