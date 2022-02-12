@@ -5,7 +5,6 @@ parameters:
   - foo
   - bar
 
-  steps:
   - ${{each thing in parameters.thingsArray}}:
     - pwsh: Write-Output ${{thing}}
       displayName: Show thing
