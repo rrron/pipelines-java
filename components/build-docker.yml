@@ -1,10 +1,7 @@
 parameters:
   - name: param
     type: object
-    default:
-      - a
-      - b
-      - c
+    default: ''
 
 # - name: dockerfilename
 
