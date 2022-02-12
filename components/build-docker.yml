@@ -13,7 +13,7 @@ steps:
       - task: Docker@2
         inputs:
           containerRegistry: 'DockerHub'
-        - ${{ each blx in parameters.build_Context }}:
+          - ${{ each blx in parameters.build_Context }}:
           repository: '${{ srvc }}'
           command: 'build'
           - ${{ each dfl in parameters.personalDockerfile }}:
