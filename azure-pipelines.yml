@@ -12,36 +12,58 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- task: Maven@3
-  inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
+stages:
+- stage: Setup
+  jobs:
+  - template: components/ExtractAssemblyVersion.yml
 
-- task: PythonScript@0
-  inputs:
-    scriptSource: 'inline'
-    script: |
-        print('variableInVariableGroup: $(variableInVariableGroup)')
+- stage: BuildAndTest
+  jobs:
+  - job: BuildAndTest
+    steps:
+    - script: |
+        mkdir -p dockerfolder/static-html-directory/
+      displayName: Create static-html-directory
 
-- task: PythonScript@0
-  inputs:
-    scriptSource: 'inline'
-    script: |
-      import os
-      print (os.environ)
+    - template: components/build-docker.yml
+      parameters:
+        build_Context:
+          - "$(System.DefaultWorkingDirectory)"
+          - ""
+          - "$(System.DefaultWorkingDirectory)"
+        personalDockerfile:
+          - "dockerfolder/Dockerfile"
+          - "dockerfolder/DockerfileHttpd"
+        service:
+          - ingest_service
+          - metadata_tools
+          - management_service
+          - ingest_service
+          - query_service
+          - processing_service
+          - landing_zone
 
-- task: github-pr-comment@0
-  inputs:
-    userToken: '$(githubToken)'
-    repository: '$(Build.Repository.Name)'
-    prNumber: '$(System.PullRequest.PullRequestNumber)'
-    bodyFilePath: ""
-    extension: 'txt'
-    getSubFolders: true
+# - stage: BuildAndTest
+#   jobs:
+  # - job: BuildAndTest
+  #   steps:
+  #   - template: components/maven.yml
+#   - job: Python
+#     steps:
+#     - template: components/python.yml
+#   - job: GithubPrComment
+#     steps:
+#     - template: components/github-pr-comment.yml
+# - stage: DockerBuild
+#   jobs:
+#   - job: Build
+#     steps:
+#     - script: |
+#         mkdir -p dockerfolder/static-html-directory/
+#       displayName: Create static-html-directory
+#   - ${{ each dockerfilename in parameters.dockerfilenames }}:
+#   - ${{ each personaltag in parameters.personaltags }}:
+#     - template: components/build-docker.yml
+#       parameters:
+#         dockerfilename: ${{ dockerfilename }}
+#         personaltag: ${{ personaltag }}

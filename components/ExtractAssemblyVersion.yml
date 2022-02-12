@@ -1,0 +1,5 @@
+jobs:
+- job: ExtractAssemblyVersion
+  steps:
+  - bash: |
+       cat /etc/os-release | grep '^VERSION' /etc/os-release
