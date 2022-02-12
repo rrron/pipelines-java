@@ -20,10 +20,10 @@ stages:
 - stage: BuildAndTest
   jobs:
   - job: BuildAndTest
-  steps:
-  - template: components/build-docker.yml
-    parameters:
-      param: ["a", "b", "c"]
+    steps:
+    - template: components/build-docker.yml
+      parameters:
+        param: ["a", "b", "c"]
 
 # - stage: BuildAndTest
 #   jobs:

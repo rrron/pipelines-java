@@ -1,8 +1,8 @@
 parameters:
-  paramn : []
+  - name: paramn
 # - name: dockerfilename
-#   type: object
-#   default: 
+  type: object
+  default: 
 #     - "dockerfolder/Dockerfile"
 #     - "dockerfolder/DockerfileHttpd"
 # - name: personaltag
