@@ -23,8 +23,8 @@ stages:
     steps:
     - template: components/build-docker.yml
       parameters:
-        - ${{ each tag in parameters.personaltag }}:
-        personaltag: 
+        - ${{ each tag in personaltag }}:
+        personaltag:
           - $(Build.BuildId)
           - $(Build.BuildNumber)
           - TEST_TAG
