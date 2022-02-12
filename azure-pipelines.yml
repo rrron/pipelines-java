@@ -6,13 +6,13 @@ parameters:
 - name: dockerfilenames
   type: object
   default: 
-    - dockerfolder/Dockerfile
-    - dockerfolder/DockerfileHttpd
+    - "dockerfolder/Dockerfile"
+    - "dockerfolder/DockerfileHttpd"
 - name: personaltags
   type: object
   default:
-    - $(Build.BuildId)
-    - $(Build.BuildNumber)
+    - "$(Build.BuildId)"
+    - "$(Build.BuildNumber)"
 
 trigger:
 - main
