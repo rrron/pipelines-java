@@ -1,5 +1,5 @@
 parameters:
-  - name: paramn
+  - name: param
     default: ''
 
 # - name: dockerfilename
@@ -13,7 +13,7 @@ parameters:
 #     - "$(Build.BuildNumber)"
 
 steps:
-  - ${{ each p in parameters.paramn }}:
+  - ${{ each p in parameters.param }}:
     - script: 'echo ${{ p }}'
 #   - task: Docker@2
 #     inputs:
