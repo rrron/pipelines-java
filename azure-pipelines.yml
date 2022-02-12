@@ -2,17 +2,26 @@
 # Build your Java project and run tests with Apache Maven.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
+# parameters:
+# - name: dockerfilenames
+#   type: object
+#   default: 
+#     - "dockerfolder/Dockerfile"
+#     - "dockerfolder/DockerfileHttpd"
+# - name: personaltags
+#   type: object
+#   default:
+#     - "$(Build.BuildId)"
+#     - "$(Build.BuildNumber)"
 parameters:
-- name: dockerfilenames
-  type: object
-  default: 
-    - "dockerfolder/Dockerfile"
-    - "dockerfolder/DockerfileHttpd"
-- name: personaltags
-  type: object
-  default:
-    - "$(Build.BuildId)"
-    - "$(Build.BuildNumber)"
+  - name: users
+    type: object
+    default:
+      - name: 'john'
+        email: 'john@doe.com'
+      - name: 'jane'
+        email: 'jane@doe.com'
+      - bob
 
 trigger:
 - main
@@ -28,6 +37,12 @@ stages:
   jobs:
   - template: components/ExtractAssemblyVersion.yml
 
+steps:
+  - ${{ each user in parameters.users }}:
+    - ${{ if eq(user.name, '') }}:
+      - script: echo 'User ${{ user }} has no email.'
+    - ${{ if ne(user.name, '') }}:
+      - script: echo 'User ${{ user.name }} with email ${{ user.email }}.'
 # - stage: BuildAndTest
 #   jobs:
 #   - job: BuildAndTest
@@ -39,16 +54,16 @@ stages:
 #   - job: GithubPrComment
 #     steps:
 #     - template: components/github-pr-comment.yml
-- stage: DockerBuild
-  jobs:
-  - job: Build
-    steps:
-    - script: |
-        mkdir -p dockerfolder/static-html-directory/
-      displayName: Create static-html-directory
-  - ${{ each dockerfilename in parameters.dockerfilenames }}:
-  - ${{ each personaltag in parameters.personaltags }}:
-    - template: components/build-docker.yml
-      parameters:
-        dockerfilename: ${{ dockerfilename }}
-        personaltag: ${{ personaltag }}
+# - stage: DockerBuild
+#   jobs:
+#   - job: Build
+#     steps:
+#     - script: |
+#         mkdir -p dockerfolder/static-html-directory/
+#       displayName: Create static-html-directory
+#   - ${{ each dockerfilename in parameters.dockerfilenames }}:
+#   - ${{ each personaltag in parameters.personaltags }}:
+#     - template: components/build-docker.yml
+#       parameters:
+#         dockerfilename: ${{ dockerfilename }}
+#         personaltag: ${{ personaltag }}
