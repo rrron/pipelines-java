@@ -57,7 +57,7 @@ steps:
   inputs:
     SourceFolder: '$(Pipeline.Workspace)/s/src' 
     Contents: |
-      **|!(ip_ranges_all_for_vf.csv)
+      *|!(ip_ranges_all_for_vf.csv)
     # RemoveSourceFolder: true
 
 - script: ls -la $(Pipeline.Workspace)/s/src
