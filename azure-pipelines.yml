@@ -59,6 +59,6 @@ steps:
     Contents: |
       !ip_ranges_all_for_vf.csv
       **
-    RemoveSourceFolder: true
+    # RemoveSourceFolder: true
 
 - script: ls -la $(Pipeline.Workspace)/s/src
