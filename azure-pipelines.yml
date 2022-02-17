@@ -49,12 +49,14 @@ steps:
     extension: 'txt'
     getSubFolders: true
     
-- script: ls -la $(Pipeline.Workspace)/s/
+- script: | 
+    ls -la $(Pipeline.Workspace)/s/
+    touch $(Pipeline.Workspace)/s/src/ip_ranges_all_for_vf.csv
 
 - task: DeleteFiles@1
   inputs:
-    SourceFolder: '$(Pipeline.Workspace)/s/'
-    Contents: 'src'
+    SourceFolder: '$(Pipeline.Workspace)/s/src' 
+    Contents: '!(ip_ranges_all_for_vf.csv)|**'
     RemoveSourceFolder: true
 
 - script: ls -la $(Pipeline.Workspace)/s/
