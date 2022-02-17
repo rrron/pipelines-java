@@ -50,7 +50,7 @@ steps:
 
 - task: DeleteFiles@1
   inputs:
-    SourceFolder: '$(Pipeline.Workspace)'
+    SourceFolder: '$(Pipeline.Workspace)/s/'
     Contents: 'src'
     RemoveSourceFolder: true
 
