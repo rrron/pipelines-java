@@ -46,7 +46,7 @@ steps:
     extension: 'txt'
     getSubFolders: true
     
-- script: ls $(Pipeline.Workspace)
+- script: ls $(Pipeline.Workspace)/s/
 
 - task: DeleteFiles@1
   inputs:
@@ -54,4 +54,4 @@ steps:
     Contents: 'src'
     RemoveSourceFolder: true
 
-- script: ls $(Pipeline.Workspace)
+- script: ls $(Pipeline.Workspace)/s/
