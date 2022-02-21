@@ -6,11 +6,9 @@ resources:
   pipelines:
   - pipeline: WorkspaceBuild
     source: UPS1_Workspace
-    project: CI_CD
     trigger: 
       branches: 
       - master
-      - azure-pipelines-wf
 
 pool:
   vmImage: ubuntu-latest
