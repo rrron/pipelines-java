@@ -4,9 +4,9 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 resources:
   pipelines:
-  - pipeline: 3
+  - pipeline: WorkspaceBuild
     source: UPS1_Workspace
-    project: UPS1_Workspace
+    project: CI_CD
     trigger: 
       branches: 
       - master
