@@ -5,12 +5,12 @@
 
 trigger: none
 
-resources:
-  pipelines:
-  - pipeline: 4 # Name of the pipeline resource
-    source: rrron.ci_cd (1) # Name of the pipeline referenced by the pipeline resource
-    # project: CI_CD # Required only if the source pipeline is in another project
-    trigger: true
+# resources:
+#   pipelines:
+#   - pipeline: 4 # Name of the pipeline resource
+#     source: rrron.ci_cd (1) # Name of the pipeline referenced by the pipeline resource
+#     # project: CI_CD # Required only if the source pipeline is in another project
+#     trigger: true
 
 pool:
   vmImage: ubuntu-latest
