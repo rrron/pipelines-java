@@ -3,15 +3,9 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
-resources:
-  pipelines:
-  - pipeline: 3
-    source: rrron.pipelines-java
-    project: CI_CD
-    trigger: 
-      branches: 
-      - master
-      - main
+trigger: 
+  - master
+  - main
 
 pool:
   vmImage: ubuntu-latest
