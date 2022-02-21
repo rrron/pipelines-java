@@ -4,7 +4,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 resources:
   pipelines:
-  - pipeline: WorkspaceBuild
+  - pipeline: azure-pipelines
     source: UPS1_Workspace
     trigger: 
       branches: 
