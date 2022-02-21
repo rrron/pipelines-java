@@ -5,7 +5,7 @@
 resources:
   pipelines:
     - pipeline: rrron_pipelines_java
-      source: 'Java rrron Pipeline (release)'
+      source: rrron/pipelines-java/azure-pipelines.yml
       trigger:
         branches:
           - main
