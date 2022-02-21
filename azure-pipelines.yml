@@ -2,12 +2,16 @@
 # Build your Java project and run tests with Apache Maven.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
-
-trigger:
-- main
-- maven
-- master
-- feature/*
+resources:
+  pipelines:
+    - pipeline: pipelines_java
+      source: 'Java Pipeline (release)'
+      trigger:
+        branches:
+          - main
+          - maven
+          - master
+          - feature/*
 
 pool:
   vmImage: ubuntu-latest
