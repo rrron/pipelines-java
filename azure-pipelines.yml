@@ -4,8 +4,8 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 resources:
   pipelines:
-    - pipeline: pipelines_java
-      source: 'Java Pipeline (release)'
+    - pipeline: rrron_pipelines_java
+      source: 'Java rrron Pipeline (release)'
       trigger:
         branches:
           - main
