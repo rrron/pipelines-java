@@ -22,8 +22,6 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 
-- script: echo This pipeline runs first !
-
 - task: PythonScript@0
   inputs:
     scriptSource: 'inline'
@@ -36,6 +34,8 @@ steps:
     script: |
       import os
       print (os.environ)
+
+- script: echo This pipeline runs first !
 
 - task: github-pr-comment@0
   inputs:
