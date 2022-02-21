@@ -4,14 +4,13 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 resources:
   pipelines:
-    - pipeline: rrron_pipelines_java
-      source: 3
-      trigger:
-        branches:
-          - main
-          - maven
-          - master
-          - feature/*
+  - pipeline: WorkspaceBuild
+    source: UPS1_Workspace
+    project: UPS1_Workspace
+    trigger: 
+      branches: 
+      - master
+      - azure-pipelines-wf
 
 pool:
   vmImage: ubuntu-latest
