@@ -11,6 +11,7 @@ resources:
     trigger: 
       branches: 
       - master
+      - main
 
 pool:
   vmImage: ubuntu-latest
