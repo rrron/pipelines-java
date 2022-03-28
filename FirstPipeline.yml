@@ -2,7 +2,6 @@ trigger: none
 resources:
   pipelines:
   - pipeline: myresourcevars  # identifier for the pipeline resource
-    source: mypipeline # source pipeline definition name
     trigger: true 
 
 pool:
