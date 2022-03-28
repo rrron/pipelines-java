@@ -20,7 +20,6 @@ steps:
     echo $(resources.pipeline.myresourcevars.requestedFor)
     echo $(resources.pipeline.myresourcevars.requestedForID)
 
-steps:
 - task: PythonScript@0
   inputs:
     scriptSource: 'inline'
